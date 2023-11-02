@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="flex items-center justify-between">
+    <h1 class="text-xl font-medium my-3">Listagem de Usuários</h1>
+    <button class="bg-green-600 text-white p-2" routerLinkActive="active">
+      <a routerLink="create">Cadastrar</a>
+    </button>
+  </div>
+
+  <table class="w-full text-sm text-left">
+    <thead class="text-xs text-gray-200 dark:bg-gray-700">
+      <tr>
+        <th class="p-2">ID</th>
+        <th class="p-2">Nome</th>
+        <th class="p-2">Sobrenome</th>
+        <th class="p-2">Email</th>
+        <th class="p-2">Telefone</th>
+        <th class="p-2">Idade</th>
+        <th class="p-2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.age }}</td>
+        <td class="flex items-center justify-center gap-2">
+          <button class="bg-blue-600 text-white p-2">
+            <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Editar</a>
+          </button>
+          <button class="bg-red-600 text-white p-2">Deletar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
