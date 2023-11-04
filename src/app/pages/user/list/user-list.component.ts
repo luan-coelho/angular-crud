@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { User } from "src/app/models/user.model";
 import { UserService } from "../../../services/user.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "user-list",
@@ -8,15 +9,19 @@ import { UserService } from "../../../services/user.service";
   styleUrls: ["./user-list.component.css"],
 })
 export class UserListComponent implements OnInit {
-  public users: User[] = [];
+  users$ = new Observable<User[]>();
 
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe(users => (this.users = users));
+    this.getAllUsers();
+  }
+
+  getAllUsers() {
+    this.users$ = this.userService.getUsers();
   }
 
   deleteUser(userId: number): void {
-    this.userService.deleteUser(userId).subscribe(_ => this.ngOnInit());
+    this.userService.deleteUser(userId).subscribe(_ => this.getAllUsers());
   }
 }

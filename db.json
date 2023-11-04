@@ -1,9 +1,3 @@
 {
-  "users": [
-    {
-      "firstName": "pessoa",
-      "lastName": "23232",
-      "id": 1
-    }
-  ]
+  "users": []
 }
